@@ -16,11 +16,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import User, Reply
 
 
 def index(request):
-    return render(request, "network/index.html")
+
+    all_replies = Reply.objects.all()
+
+    context = {"replies": all_replies}
+    return render(request, "network/index.html", context)
 
 
 def login_view(request):
@@ -34,7 +38,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("network:index"))
         else:
             return render(
                 request,
@@ -47,7 +51,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("network:index"))
 
 
 def register(request):
@@ -72,6 +76,6 @@ def register(request):
                 request, "network/register.html", {"message": "Username already taken."}
             )
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("network:index"))
     else:
         return render(request, "network/register.html")

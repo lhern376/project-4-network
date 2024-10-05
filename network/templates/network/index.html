@@ -1,5 +1,15 @@
 {% extends "network/layout.html" %}
-
 {% block body %}
-    TODO
-{% endblock %}
+    {% comment %} Reply
+reply.replier.username
+reply.reply_date
+reply.reply_message
+
+    {% endcomment %}
+    {% for reply in replies %}
+        <div class="reply">
+            <span>{{ reply.replier.username }}</span>·<span>{{ reply.reply_date }}</span>
+            <div>{{ reply.reply_message }}</div>
+        </div>
+    {% endfor %}
+{% endblock body %}
