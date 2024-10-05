@@ -36,7 +36,7 @@ class User(AbstractUser):
 
     date_joined = models.DateField(auto_now=True, help_text="Date joined")
 
-    # they are subscribed to me
+    # users subscribed to this user
     followers = models.ManyToManyField(
         "User",
         blank=True,
@@ -47,7 +47,7 @@ class User(AbstractUser):
     # track with logic
     num_followers = models.IntegerField(default=0)
 
-    # i'm subscribed to
+    # users this user is subscribed to
     following = models.ManyToManyField(
         "User",
         blank=True,
@@ -58,6 +58,7 @@ class User(AbstractUser):
     # track with logic
     num_following = models.IntegerField(default=0)
 
+    # liked replies of this user
     likes = models.ManyToManyField(
         "Reply",
         blank=True,
@@ -75,15 +76,40 @@ class User(AbstractUser):
         return self.following.all()
 
 
+# NOTE:
+# - pending:
+#   - decide how to handle deleted replies
+#
 class Reply(models.Model):
     """Model representing a Post/Reply"""
 
+    # NOTE:
+    # - Facts about Reply:
+    #
+    #   - a reply is never deleted from the database (to simulate deletion track its 'deleted' field)
+    #   - a reply with no 'replying_to' field is also an original post 'reply_type'
+
+    # NOTE:
+    # - a Reply will remain even when the 'replier' is deleted
+    # (in this case the 'deleted' Reply field should be updated to True and the 'reply_message' erased)
+    #
     replier = models.ForeignKey(
-        User, null=True, on_delete=models.PROTECT, related_name="replies"
+        User,
+        on_delete=models.SET_NULL,  # sets 'replier' to null if the user is deleted
+        null=True,
+        blank=True,
+        related_name="replies",
     )
 
+    # NOTE:
+    # - a Reply will remain even when the parent reply (the post that is being replied to) is deleted
+    # (its parent reply is never actually deleted, its 'deleted' field is tracked for this purpose - see 'Facts about Reply' above)
     replying_to = models.ForeignKey(
-        "Reply", null=True, blank=True, on_delete=models.PROTECT, related_name="replies"
+        "Reply",
+        on_delete=models.PROTECT,  # makes sure referenced object is not deleted by raising exception
+        related_name="replies",
+        null=True,
+        blank=True,
     )
 
     types_of_replies = [
