@@ -1,0 +1,33 @@
+{% comment "--------- Django Docs ---------" %}
+
+    https://docs.djangoproject.com/en/5.1/topics/templates/             -- primer on templates
+
+    https://docs.djangoproject.com/en/5.1/ref/templates/language/       -- another primer from the ref section
+    
+    https://docs.djangoproject.com/en/5.1/ref/templates/builtins/       -- built-in template tags and filters
+
+    https://docs.djangoproject.com/en/5.1/howto/overriding-templates/#extending-an-overridden-template      -- overriding templates
+
+{% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="foo">
+        <meta name="keywords" content="bar,baz">
+        <title>
+            {% block title %}
+                Social Network
+            {% endblock title %}
+        </title>
+        {% block css_files %}
+            <link href="{% static 'network/css/styles.css' %}" rel="stylesheet">
+        {% endblock css_files %}
+    </head>
+    <body>
+        {% block body %}
+        {% endblock body %}
+        {% block js_files %}
+        {% endblock js_files %}
+    </body>
+</html>

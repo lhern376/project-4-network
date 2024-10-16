@@ -1,0 +1,60 @@
+{% comment 'Context' %} 
+
+    user ('User' Model)
+    
+
+{% endcomment %}
+{% load static %}
+<div class="navigation">
+    <div class="nav-chunk">
+        <div class="nav-chunk-item">
+            <a href="">
+                <div class="site-logo">TwitteX</div>
+            </a>
+        </div>
+        <div class="nav-chunk-item">
+            <a href="">
+                <div>
+                    <img src="{% static "network/images/home_icon.svg" %}" alt="home icon" width="26" height="26">
+                    <span>Home</span>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <img src="{% static "network/images/profile_icon_active.svg" %}" alt="profile icon" width="26" height="26">
+                    <span>Profile</span>
+                </div>
+            </a>
+        </div>
+        <div class="nav-chunk-item">
+            <a>
+                <div class="post-button">Post</div>
+            </a>
+        </div>
+    </div>
+    <div class="nav-chunk">
+        <div class="nav-chunk-item">
+            {% if user.is_authenticated %}
+                <a href="{% url 'network:logout' %}">
+                    <div>
+                        <img src="{% static "network/images/logout_icon.svg" %}" alt="logout icon" width="26" height="26">
+                        <span>Logout</span>
+                    </div>
+                </a>
+            {% else %}
+                <a href="{% url 'network:login' %}">
+                    <div>
+                        <img src="{% static "network/images/login_icon.svg" %}" alt="login icon" width="26" height="26">
+                        <span>Login</span>
+                    </div>
+                </a>
+                <a href="{% url 'network:register' %}">
+                    <div>
+                        <img src="{% static "network/images/signup_icon.svg" %}" alt="profile icon" width="26" height="26">
+                        <span>Sign Up</span>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

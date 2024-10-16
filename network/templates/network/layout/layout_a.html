@@ -1,0 +1,34 @@
+{% extends "network/meta/base_a.html" %}
+{% comment 'Context' %} 
+
+    replies ('Reply' Model)
+
+{% endcomment %}
+{% block body %}
+    <div class="main-layout-a">
+        <header>
+            <nav>
+                {% block nav %}
+                    {% include "network/components/component_navigation.html" %}
+                {% endblock nav %}
+            </nav>
+        </header>
+        <main>
+            {% block main %}
+                <article>
+                    {% for reply in replies %}
+                        <div class="reply">
+                            <span>{{ reply.replier.username }}</span>·<span>{{ reply.reply_date }}</span>
+                            <div>{{ reply.reply_message }}</div>
+                        </div>
+                    {% endfor %}
+                </article>
+                <article></article>
+            {% endblock main %}
+        </main>
+        {% block footer %}
+            <footer>
+            </footer>
+        {% endblock footer %}
+    </div>
+{% endblock body %}

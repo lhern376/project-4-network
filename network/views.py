@@ -24,7 +24,8 @@ def index(request):
     all_replies = Reply.objects.all()
 
     context = {"replies": all_replies}
-    return render(request, "network/index.html", context)
+    # return render(request, "network/index.html", context)
+    return render(request, "network/render_template/index.html", context)
 
 
 def login_view(request):
