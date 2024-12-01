@@ -10,6 +10,12 @@
 
 /* ---------------------------------------------- Main Styles */
 
+/* --------------- Home Styles */
+
+/* --------------- Explore Styles */
+
+/* --------------- Profile Styles */
+
 /* ---------------------------------------------- Media Queries */
 
 /* ---------------------------------------------- Override Styles */
@@ -19,91 +25,88 @@
 /* ---------------------------------------------- General Styles */
 
 :root {
-    /* variables */
-    --bg-color: black;
-    --bg-color-nav-link: hsl(0, 0%, 10%);
-    --bg-color-post-btn: rgb(29, 155, 240);
-    --bg-color-post-btn-hover: rgb(26, 140, 216);
-    --f-color: rgb(231, 233, 234);
-    --b-color: rgb(47, 51, 54);
+  /* variables */
+  --bg-color: black; /* background color */
+  --bg-color-nav-link: hsl(0, 0%, 10%); /* background color hover */
+  --bg-color-post-btn: rgb(29, 155, 240);
+  --bg-color-post-btn-hover: rgb(26, 140, 216);
+  --f-color: rgb(231, 233, 234); /* font color */
+  --f-color-secondary: rgb(113, 118, 123);
+  --b-color: rgb(47, 51, 54); /* border color */
 
-    /* root styles */
-    font-size: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
+  /* root styles */
+  font-size: 10px;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--f-color);
-    font-size: 1.6rem;
+  background-color: var(--bg-color);
+  color: var(--f-color);
+  font-size: 1.6rem;
 
-    /* normalize  */
-    margin: 0;
-    padding: 0;
+  /* normalize  */
+  margin: 0;
+  padding: 0;
 }
 
 .main-layout-a {
-    margin: 0 auto;
-    width: 126rem;
-    /*131rem*/
+  margin: 0 auto;
+  width: 126rem;
+  /*131rem*/
 
-    display: flex;
-}
-
-main article:last-child {
-    width: 35rem;
+  display: flex;
 }
 
 /* ---------------------------------------------- Header Styles */
 
 .navigation {
-    display: flex;
-    flex-direction: column;
-    row-gap: 6rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 6rem;
 
-    width: 26rem;
-    padding: 0 0.8rem;
+  width: 26rem;
+  padding: 0 0.8rem;
 }
 
 .navigation a {
-    text-decoration: none;
-    font-size: 2rem;
-    color: inherit;
+  text-decoration: none;
+  font-size: 2rem;
+  color: inherit;
 
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 .nav-chunk {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.6rem;
 }
 
 .nav-chunk-item {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-chunk-item a div {
-    display: inline-flex;
-    align-items: center;
-    column-gap: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 1.6rem;
 
-    padding: 1.2rem;
-    padding-right: 3rem;
-    border-bottom-left-radius: 9999px;
-    border-bottom-right-radius: 9999px;
-    border-top-left-radius: 9999px;
-    border-top-right-radius: 9999px;
+  padding: 1.2rem;
+  padding-right: 3rem;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
 
-    transition-property: background-color;
-    transition-duration: 0.2s;
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
 .nav-chunk-item a div:hover {
-    background-color: var(--bg-color-nav-link);
+  background-color: var(--bg-color-nav-link);
 }
 
 /* ---------------------------------------------- Post Button Styles */
@@ -111,42 +114,99 @@ main article:last-child {
 /* post button needs higher specificity than '.nav-chunk-item a div' to override 'inline-flex' and take up full container width */
 /* .post-button { */
 .nav-chunk-item .post-button {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    height: 5rem;
-    max-width: 23rem;
-    padding: 0;
-    background-color: var(--bg-color-post-btn);
+  height: 5rem;
+  max-width: 23rem;
+  padding: 0;
+  background-color: var(--bg-color-post-btn);
 
-    font-size: 1.8rem;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .nav-chunk-item .post-button:hover {
-    background-color: var(--bg-color-post-btn-hover);
+  background-color: var(--bg-color-post-btn-hover);
 }
 
 /* ---------------------------------------------- Logo Styles */
 
 /* needs higher specificity than '.nav-chunk-item a div' */
 .nav-chunk-item .site-logo {
-    padding: 1.2rem;
+  font-family: "Kalam", Arial, Helvetica, sans-serif;
+  padding: 1.2rem;
 }
 
 /* ---------------------------------------------- Main Styles */
 
 main {
-    width: 105rem;
+  width: 105rem;
+
+  display: flex;
+  justify-content: space-between;
 }
 
-main article:first-child {
-    width: 59.8rem;
-    min-height: 100vh;
+main section:first-child {
+  width: 59.8rem;
+  min-height: 100vh;
 
-    border-left: 1px solid var(--b-color);
-    border-right: 1px solid var(--b-color);
+  border-left: 1px solid var(--b-color);
+  border-right: 1px solid var(--b-color);
 }
+
+main section:last-child {
+  width: 35rem;
+}
+
+.spacing {
+  height: 20rem;
+}
+
+.section-main article {
+  border-bottom: 1px solid var(--b-color);
+}
+
+/* --------------- Home Styles */
+
+.filter-post {
+  display: flex;
+}
+
+.filter-post a {
+  height: 5.3rem;
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-post a:hover {
+  background-color: var(--bg-color-nav-link);
+  cursor: pointer;
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.filter-post a div span {
+  font-size: 1.5rem;
+  color: var(--f-color-secondary);
+}
+
+.active-link {
+  border-bottom: 4px solid var(--bg-color-post-btn);
+
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+/* --------------- Explore Styles */
+
+/* --------------- Profile Styles */
 
 /* ---------------------------------------------- Media Queries */

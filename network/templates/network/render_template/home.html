@@ -1,0 +1,30 @@
+{% extends "network/layout/layout_a.html" %}
+{% comment 'Context' %}
+
+    var: posts, model: Reply
+    
+{% endcomment %}
+{% block section_main %}
+    <div class="section-main">
+        <article>
+            <nav class="filter-post">
+                <a>
+                    <div>
+                        <span class="active-link">For you</span>
+                    </div>
+                </a>
+                <a>
+                    <div>
+                        <span>Following</span>
+                    </div>
+                </a>
+            </nav>
+        </article>
+        <article>{% include "network/components/write_post.html" %}</article>
+        {% for posts in posts %}
+            <article>{% include "network/components/post.html" %}</article>
+        {% empty %}
+        {% endfor %}
+        <div class="spacing"></div>
+    </div>
+{% endblock section_main %}

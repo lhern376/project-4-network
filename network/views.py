@@ -20,12 +20,17 @@ from .models import User, Reply
 
 
 def index(request):
+    return HttpResponseRedirect(reverse("network:home"))
 
-    all_replies = Reply.objects.all()
 
-    context = {"replies": all_replies}
-    # return render(request, "network/index.html", context)
-    return render(request, "network/render_template/index.html", context)
+def home(request):
+    # NOTE:
+    # - pending: paginate | limit entries (e.g. 20 + infinite scrolling)
+
+    all_posts = Reply.objects.all()
+
+    context = {"posts": all_posts}
+    return render(request, "network/render_template/home.html", context)
 
 
 def login_view(request):
