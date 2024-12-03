@@ -4,13 +4,18 @@
     var: posts, model: Reply
     
 {% endcomment %}
+{% comment 'Blocks' %} 
+
+    section_main            - inherited
+
+{% endcomment %}
 {% block section_main %}
     <div class="section-main">
         <article>
             <nav class="filter-post">
                 <a>
                     <div>
-                        <span class="active-link">For you</span>
+                        <span class="active-link">All posts</span>
                     </div>
                 </a>
                 <a>
@@ -20,10 +25,8 @@
                 </a>
             </nav>
         </article>
-        <article>{% include "network/components/write_post.html" %}</article>
-        {% for posts in posts %}
+        {% for post in posts %}
             <article>{% include "network/components/post.html" %}</article>
-        {% empty %}
         {% endfor %}
         <div class="spacing"></div>
     </div>

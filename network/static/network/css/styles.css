@@ -16,6 +16,8 @@
 
 /* --------------- Profile Styles */
 
+/* --------------- Post Styles */
+
 /* ---------------------------------------------- Media Queries */
 
 /* ---------------------------------------------- Override Styles */
@@ -34,6 +36,13 @@
   --f-color-secondary: rgb(113, 118, 123);
   --b-color: rgb(47, 51, 54); /* border color */
 
+  --bg-color-active-blue: rgba(29, 155, 240, 0.1);
+  --fill-active-blue: rgb(29, 155, 240);
+  --bg-color-active-green: rgba(0, 186, 124, 0.1);
+  --fill-active-green: rgb(0, 186, 124);
+  --bg-color-active-red: rgba(249, 24, 128, 0.1);
+  --fill-active-red: rgb(249, 24, 128);
+
   /* root styles */
   font-size: 10px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -43,7 +52,8 @@
 body {
   background-color: var(--bg-color);
   color: var(--f-color);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 
   /* normalize  */
   margin: 0;
@@ -56,6 +66,54 @@ body {
   /*131rem*/
 
   display: flex;
+}
+
+.border-pill {
+  border-radius: 9999px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.text-secondary {
+  color: var(--f-color-secondary);
+}
+
+.text-small {
+  font-size: 1.3rem;
+}
+
+.background-transition {
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.color-transition {
+  transition-property: color;
+  transition-duration: 0.2s;
+}
+
+.fill-transition {
+  transition-property: fill;
+  transition-duration: 0.2s;
 }
 
 /* ---------------------------------------------- Header Styles */
@@ -96,10 +154,7 @@ body {
 
   padding: 1.2rem;
   padding-right: 3rem;
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
+  border-radius: 9999px;
 
   transition-property: background-color;
   transition-duration: 0.2s;
@@ -191,22 +246,190 @@ main section:last-child {
   transition-duration: 0.2s;
 }
 
-.filter-post a div span {
-  font-size: 1.5rem;
+.filter-post span {
   color: var(--f-color-secondary);
+
+  padding: 1.6rem 0 1.2rem 0;
 }
 
-.active-link {
+.filter-post .active-link {
+  font-weight: bold;
+  color: var(--f-color);
   border-bottom: 4px solid var(--bg-color-post-btn);
-
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
 }
 
 /* --------------- Explore Styles */
 
 /* --------------- Profile Styles */
+
+/* --------------- Post Styles */
+
+.post {
+  cursor: pointer;
+  padding-inline: 1.6rem;
+}
+
+.post > div:first-child {
+  padding-top: 1.2rem;
+}
+
+.post-content-wrapper {
+  display: flex;
+}
+
+.post-profile-icon {
+  position: relative;
+
+  margin-right: 0.8rem;
+}
+
+.post-profile-icon a {
+  display: inline-block;
+  height: 4.4rem;
+  width: 4.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-profile-icon a div {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  background-image: url("../images/default_profile_400x400.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.post-profile-overlay {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+
+  background-color: rgba(26, 26, 26, 0);
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.post-profile-overlay:hover {
+  background-color: rgba(26, 26, 26, 0.15);
+}
+
+.post-content {
+  flex: 1;
+  padding-bottom: 1.2rem;
+}
+
+.post-meta > div:last-child {
+  /* overrides .svg-wrapper's width and height */
+  width: 3.5rem;
+  height: 1.9rem;
+}
+
+.name-handle-date-wrapper a:nth-child(1) {
+  color: var(--f-color);
+  font-weight: bold;
+}
+
+.name-handle-date-wrapper a {
+  color: var(--f-color-secondary);
+  text-decoration: none;
+}
+
+.name-handle-date-wrapper a:nth-child(1):hover {
+  text-decoration: underline;
+}
+
+.name-handle-date-wrapper a:nth-child(4):hover {
+  text-decoration: underline;
+}
+
+.name-handle-date-wrapper span {
+  color: var(--f-color-secondary);
+}
+
+.message-wrapper {
+  margin-top: 0.2rem;
+}
+
+.reply-repost-like-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 1.2rem;
+}
+
+.svg-reply-wrapper {
+  color: var(--f-color-secondary);
+  fill: var(--f-color-secondary);
+
+  transition-property: background-color, fill;
+  transition-duration: 0.2s;
+}
+
+.svg-reply-wrapper:hover {
+  /* - hovering this element changes the background color of any of its children that use --bg-local as background-color */
+  /* - see .svg-wrapper */
+  --bg-local: var(--bg-color-active-blue);
+
+  color: var(--fill-active-blue);
+  fill: var(--fill-active-blue);
+}
+
+.svg-repost-wrapper {
+  color: var(--f-color-secondary);
+  fill: var(--f-color-secondary);
+
+  transition-property: background-color, fill;
+  transition-duration: 0.2s;
+}
+
+.svg-repost-wrapper:hover {
+  /* - hovering this element changes the background color of any of its children that use --bg-local as background-color */
+  /* - see .svg-wrapper */
+  --bg-local: var(--bg-color-active-green);
+
+  color: var(--fill-active-green);
+  fill: var(--fill-active-green);
+}
+
+.svg-like-wrapper {
+  color: var(--f-color-secondary);
+  fill: var(--f-color-secondary);
+
+  transition-property: background-color, fill;
+  transition-duration: 0.2s;
+}
+
+.svg-like-wrapper:hover {
+  /* - hovering this element changes the background color of any of its children that use --bg-local as background-color */
+  /* - see .svg-wrapper */
+  --bg-local: var(--bg-color-active-red);
+
+  color: var(--fill-active-red);
+  fill: var(--fill-active-red);
+}
+
+.count {
+  margin-left: -0.4rem;
+}
+
+.svg-wrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+
+  background-color: var(--bg-local);
+}
+
+.svg-wrapper svg {
+  width: 1.9rem;
+  height: 1.9rem;
+}
 
 /* ---------------------------------------------- Media Queries */
