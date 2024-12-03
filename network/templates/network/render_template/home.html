@@ -28,6 +28,13 @@
         {% for post in posts %}
             <article>{% include "network/components/post.html" %}</article>
         {% endfor %}
+        {% comment %} testing replies look {% endcomment %}
+        {% for post in posts %}
+            <article>{% include "network/components/reply.html" %}</article>
+        {% endfor %}
+        {% for post in posts %}
+            <article>{% include "network/components/reply_simplified.html" %}</article>
+        {% endfor %}
         <div class="spacing"></div>
     </div>
 {% endblock section_main %}

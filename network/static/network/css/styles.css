@@ -1,5 +1,17 @@
 /* Index */
 
+/* NOTES: 
+
+  - some of the sections below directly correspond to files in 'templates/network/components'
+  (my lego pieces) 
+
+  - other sections like 'Home Styles', 'Profile Styles', etc, refer to the pages returned to the user
+  so they correspond to 'paths' or 'views' in 'urls.py' and 'views.py' respectively.
+
+  - 'utility-wrapper' is a class used for semantic purposes only it won't have any property declarations
+
+*/
+
 /* ---------------------------------------------- General Styles */
 
 /* ---------------------------------------------- Header Styles */
@@ -18,6 +30,8 @@
 
 /* --------------- Post Styles */
 
+/* --------------- Simplified Reply Styles */
+
 /* ---------------------------------------------- Media Queries */
 
 /* ---------------------------------------------- Override Styles */
@@ -35,6 +49,8 @@
   --f-color: rgb(231, 233, 234); /* font color */
   --f-color-secondary: rgb(113, 118, 123);
   --b-color: rgb(47, 51, 54); /* border color */
+
+  --continuity-line-color: rgb(51, 54, 57);
 
   --bg-color-active-blue: rgba(29, 155, 240, 0.1);
   --fill-active-blue: rgb(29, 155, 240);
@@ -277,10 +293,16 @@ main section:last-child {
   display: flex;
 }
 
+.post-profile-wrapper {
+  margin-right: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .post-profile-icon {
   position: relative;
-
-  margin-right: 0.8rem;
 }
 
 .post-profile-icon a {
@@ -322,11 +344,11 @@ main section:last-child {
 }
 
 .post-content {
-  flex: 1;
+  /* flex: 1; */
   padding-bottom: 1.2rem;
 }
 
-.post-meta > div:last-child {
+.post-meta .svg-more-wrapper {
   /* overrides .svg-wrapper's width and height */
   width: 3.5rem;
   height: 1.9rem;
@@ -356,6 +378,8 @@ main section:last-child {
 
 .message-wrapper {
   margin-top: 0.2rem;
+  max-width: 98%;
+  word-break: break-all;
 }
 
 .reply-repost-like-wrapper {
@@ -430,6 +454,26 @@ main section:last-child {
 .svg-wrapper svg {
   width: 1.9rem;
   height: 1.9rem;
+}
+
+/* --------------- Simplified Reply Styles */
+
+.reply-to {
+  color: var(--f-color-secondary);
+
+  padding-top: 0.4rem;
+  padding-bottom: 1.6rem;
+}
+
+.reply-to-username {
+  color: var(--fill-active-blue);
+}
+
+.continuity-line {
+  flex: 1; /* alternatively, height: 100%; */
+  width: 0.2rem;
+
+  background-color: var(--continuity-line-color);
 }
 
 /* ---------------------------------------------- Media Queries */

@@ -1,0 +1,42 @@
+{% comment 'Context' %} 
+
+    var: user, model: User
+    var: post, model: Reply
+
+{% endcomment %}
+{% comment 'Blocks' %} 
+
+    - the blocks in this component are used primarily to exclude structure in 
+    'reply_simplified.html' which is a simplified version of this component
+
+    - it is also used to add the continuity line on 'reply.html'
+
+    section_main            - inherited
+
+{% endcomment %}
+{% load static %}
+<div class="post">
+    <div></div>
+    <div class="post-content-wrapper">
+        <div class="post-profile-icon">
+            <a href="">
+                <div></div>
+            </a>
+            <div class="post-profile-overlay"></div>
+        </div>
+        <div class="post-content">
+            <div class="post-meta flex justify-content-space-between">
+                <div class="name-handle-date-wrapper">
+                    <a href="">{{ post.replier.first_name }}</a>
+                    <a href="">@{{ post.replier.username }}</a>
+                    <span>·</span>
+                    <a href=""><time datetime="{{ post.reply_date|date:"c" }}">{{ post.reply_date|date:"M j, Y" }}</time></a>
+                </div>
+            </div>
+            <div class="message-wrapper">
+                <span>{{ post.reply_message }}</span>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

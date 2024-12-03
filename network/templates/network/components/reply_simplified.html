@@ -1,0 +1,30 @@
+{% extends "network/components/post.html" %}
+{% comment 'Context' %} 
+
+    var: user, model: User
+    var: post, model: Reply
+
+{% endcomment %}
+{% comment 'Blocks' %} 
+
+    three_dots_icon             - inherited
+    reply_bar                   - inherited
+    reply_to                    - inherited
+    continuity_line             - inherited
+
+{% endcomment %}
+{% comment %} adds continuity line {% endcomment %}
+{% block continuity_line %}
+    <div class="continuity-line"></div>
+{% endblock continuity_line %}
+{% comment %} empties 'three_dots_icon' {% endcomment %}
+{% block three_dots_icon %}
+{% endblock three_dots_icon %}
+{% comment %} empties 'reply_bar' {% endcomment %}
+{% block reply_bar %}
+{% endblock reply_bar %}
+{% block reply_to %}
+    <div class="reply-to">
+        Replying to <span class="reply-to-username">@{{ post.replier.username }}</span>
+    </div>
+{% endblock reply_to %}
