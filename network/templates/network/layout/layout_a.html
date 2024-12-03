@@ -6,6 +6,7 @@
 {% comment 'Blocks' %} 
 
     body                - inherited
+    write_post
     nav
     section_main
     section_aside
@@ -13,6 +14,11 @@
 
 {% endcomment %}
 {% block body %}
+    {% block write_post %}
+        <div class="write-post-overlay hide">
+            <div class="write-post-wrapper"></div>
+        </div>
+    {% endblock write_post %}
     <div class="main-layout-a">
         <header>
             <nav>
