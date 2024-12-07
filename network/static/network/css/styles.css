@@ -16,7 +16,11 @@
 
 /* ---------------------------------------------- Header Styles */
 
+/* ---------------------------------------------- Modal Styles */
+
 /* ---------------------------------------------- Post Button Styles */
+
+/* ---------------------------------------------- Close Button Styles */
 
 /* ---------------------------------------------- Logo Styles */
 
@@ -64,6 +68,8 @@
   /* --bg-overlay: hsla(209, 22%, 50%, 0.4); */
   --bg-overlay: rgba(91, 112, 131, 0.4);
 
+  --fill-active-white: rgb(239, 243, 244);
+
   /* root styles */
   font-size: 10px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -110,6 +116,24 @@ body {
 .flex-center {
   justify-content: center;
   align-items: center;
+}
+
+.flex-cross-center {
+  /* cross axis center */
+  align-items: center;
+}
+
+.flex-main-center {
+  /* main axis center */
+  justify-content: center;
+}
+
+.flex-main-end {
+  justify-content: end;
+}
+
+.flex-cross-end {
+  align-items: end;
 }
 
 .justify-content-space-between {
@@ -191,6 +215,54 @@ body {
   background-color: var(--bg-color-nav-link);
 }
 
+/* ---------------------------------------------- Modal Styles */
+
+.modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: var(--bg-overlay);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+}
+
+.modal-overlay.hide {
+  /* 'and' operation to increase specificity and override 'display: flex' from '.modal-overlay' */
+  display: none;
+}
+
+.modal-set-height {
+  /* solution to allow me to set 'min-height' on '.modal-wrapper' */
+  height: 1000rem;
+}
+
+.modal-wrapper {
+  width: 60rem;
+  min-height: 20rem;
+
+  background-color: var(--bg-color);
+  border-radius: 1.6rem;
+
+  position: relative;
+  top: 5.4rem;
+  left: 0.6rem;
+}
+
+.modal-wrapper > div {
+  padding-inline: 1.6rem;
+}
+.modal-wrapper > div:first-child {
+  height: 5.3rem;
+  padding-inline: 1rem;
+  margin-bottom: 1.6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
 /* ---------------------------------------------- Post Button Styles */
 
 /* post button needs higher specificity than '.nav-chunk-item a div' to override 'inline-flex' and take up full container width */
@@ -211,6 +283,28 @@ body {
 
 .nav-chunk-item .post-button:hover {
   background-color: var(--bg-color-post-btn-hover);
+}
+
+/* ---------------------------------------------- Close Button Styles */
+
+.close-button {
+  background-color: var(--bg-color);
+  border: none;
+  padding: 0;
+}
+
+.close-button:hover {
+  cursor: pointer;
+}
+
+.svg-close-wrapper {
+  fill: var(--fill-active-white);
+}
+
+.svg-close-wrapper:hover {
+  /* - hovering this element changes the background color of any of its children that use --bg-local as background-color */
+  /* - see .svg-wrapper */
+  --bg-local: var(--bg-color-nav-link);
 }
 
 /* ---------------------------------------------- Logo Styles */
@@ -489,32 +583,56 @@ main section:last-child {
 
 /* --------------- Write Post Styles */
 
-.write-post-overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: var(--bg-overlay);
-  z-index: 1000;
-
-  display: flex;
-  justify-content: center;
+.write-message-wrapper {
+  padding-block: 1rem;
+  min-height: 9.6rem;
 }
 
-.write-post-overlay.hide {
-  /* 'and' operation to increase specificity and override 'display: flex' from '.write-post-overlay' */
-  display: none;
+.write-message-wrapper > div {
+  border-inline: 0.2rem solid var(--bg-color);
 }
 
-.write-post-wrapper {
-  width: 60rem;
-  height: 30rem;
+.message-content {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  outline-style: none;
+}
 
-  background-color: var(--bg-color);
-  border-radius: 1.6rem;
+.message-placeholder {
+  font-size: 2rem;
+  line-height: 2.4rem;
 
-  position: relative;
-  top: 5.4rem;
-  left: 0.6rem;
+  color: var(--f-color-secondary);
+}
+
+.form-spacing {
+  height: 3.6rem;
+  border-bottom: 1px solid var(--b-color);
+}
+
+.form-post-button-wrapper {
+  height: 4.8rem;
+  padding-bottom: 1rem;
+}
+
+.form-post-button {
+  background-color: var(--bg-color-post-btn);
+  border: none;
+  padding: 0;
+
+  /* margin-left: 1.2rem; */
+
+  width: 6.6rem;
+  height: 3.4rem;
+
+  color: var(--f-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-post-button:hover {
+  cursor: pointer;
+  background-color: var(--bg-color-post-btn-hover);
 }
 
 /* ---------------------------------------------- Media Queries */

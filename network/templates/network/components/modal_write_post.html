@@ -1,0 +1,37 @@
+{% extends "network/components/modal.html" %}
+{% comment 'Context' %} 
+
+    var: user, model: User
+    var: post, model: Reply
+
+{% endcomment %}
+{% comment 'Blocks' %} 
+              
+    modal_content           - inherited, from modal.html
+    
+{% endcomment %}
+{% load static %}
+{% block modal_content %}
+    <div class="utility-wrapper">
+        <div class="utility-wrapper">
+            <div class="flex">
+                {% block profile_icon %}
+                    {% include "network/components/post_profile_icon.html" %}
+                {% endblock profile_icon %}
+                <div class="write-message-wrapper flex-1">
+                    <div>
+                        <span class="message-content" contenteditable></span>
+                        <span class="message-placeholder">What is happening?!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-spacing"></div>
+            <div class="form-post-button-wrapper flex flex-main-end flex-cross-end">
+                <button type="button"
+                        class="form-post-button border-pill flex flex-center background-transition">
+                    <div>Post</div>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock modal_content %}

@@ -7,16 +7,16 @@
 {% endcomment %}
 {% comment 'Blocks' %} 
 
-    three_dots_icon             - inherited
-    reply_bar                   - inherited
-    reply_to                    - inherited
-    continuity_line             - inherited
+    three_dots_icon             - inherited, post.html
+    reply_bar                   - inherited, post.html
+    reply_to                    - inherited, post.html
+    post_profile_icon           - inherited, post.html
 
 {% endcomment %}
 {% comment %} adds continuity line {% endcomment %}
-{% block continuity_line %}
-    <div class="continuity-line"></div>
-{% endblock continuity_line %}
+{% block post_profile_icon %}
+    {% include "network/components/post_profile_icon_reply.html" %}
+{% endblock post_profile_icon %}
 {% comment %} empties 'three_dots_icon' {% endcomment %}
 {% block three_dots_icon %}
 {% endblock three_dots_icon %}

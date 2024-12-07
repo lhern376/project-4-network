@@ -23,16 +23,9 @@
 <div class="post">
     <div></div>
     <div class="post-content-wrapper">
-        <div class="post-profile-wrapper">
-            <div class="post-profile-icon">
-                <a href="">
-                    <div></div>
-                </a>
-                <div class="post-profile-overlay"></div>
-            </div>
-            {% block continuity_line %}
-            {% endblock continuity_line %}
-        </div>
+        {% block post_profile_icon %}
+            {% include "network/components/post_profile_icon.html" %}
+        {% endblock post_profile_icon %}
         <div class="utility-wrapper flex-1">
             <div class="post-content">
                 <div class="post-meta flex justify-content-space-between">

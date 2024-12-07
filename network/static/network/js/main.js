@@ -4,7 +4,7 @@
  */
 
 body = document.querySelector("body");
-screenOverlay = document.querySelector(".write-post-overlay");
+screenOverlay = document.querySelector(".modal-overlay");
 
 // - adds overlay and disables scrolling
 document.querySelector(".post-button").addEventListener("click", () => {

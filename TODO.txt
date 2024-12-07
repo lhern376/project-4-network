@@ -1,0 +1,3 @@
+
+
+- write down on the html files which classes are used with javascript

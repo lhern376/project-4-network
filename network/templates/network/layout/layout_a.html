@@ -5,8 +5,16 @@
 {% endcomment %}
 {% comment 'Blocks' %} 
 
-    body                - inherited
+    body                - inherited, base_a.html
+
+    - hidden modals:
+
+    sign_in             
+    sign_up
     write_post
+
+    - page sections:
+
     nav
     section_main
     section_aside
@@ -14,10 +22,12 @@
 
 {% endcomment %}
 {% block body %}
+    {% block sign_in %}
+    {% endblock sign_in %}
+    {% block sign_up %}
+    {% endblock sign_up %}
     {% block write_post %}
-        <div class="write-post-overlay hide">
-            <div class="write-post-wrapper"></div>
-        </div>
+        {% include "network/components/modal_write_post.html" %}
     {% endblock write_post %}
     <div class="main-layout-a">
         <header>

@@ -1,0 +1,21 @@
+{% comment 'Context' %} 
+
+    var: user, model: User
+    var: post, model: Reply
+
+{% endcomment %}
+{% comment 'Blocks' %} 
+
+    continuity_line
+
+{% endcomment %}
+<div class="post-profile-wrapper">
+    <div class="post-profile-icon">
+        <a href="">
+            <div></div>
+        </a>
+        <div class="post-profile-overlay"></div>
+    </div>
+    {% block continuity_line %}
+    {% endblock continuity_line %}
+</div>
