@@ -1,3 +1,12 @@
 
 
-- write down on the html files which classes are used with javascript
+>> 	write down on the html files which classes are used with javascript
+
+>>	clipboard
+
+write-message-wrapper
+message-content
+message-placeholder
+
+form-post-button
+post-button

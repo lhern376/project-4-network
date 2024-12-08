@@ -16,11 +16,11 @@
         <div class="utility-wrapper">
             <div class="flex">
                 {% block profile_icon %}
-                    {% include "network/components/post_profile_icon.html" %}
+                    {% include "network/components/post_profile_icon_not_interactive.html" %}
                 {% endblock profile_icon %}
                 <div class="write-message-wrapper flex-1">
                     <div>
-                        <span class="message-content" contenteditable></span>
+                        <span class="message-content" contenteditable="true"></span>
                         <span class="message-placeholder">What is happening?!</span>
                     </div>
                 </div>
@@ -28,7 +28,8 @@
             <div class="form-spacing"></div>
             <div class="form-post-button-wrapper flex flex-main-end flex-cross-end">
                 <button type="button"
-                        class="form-post-button border-pill flex flex-center background-transition">
+                        disabled="true"
+                        class="form-post-button disabled border-pill flex flex-center background-transition">
                     <div>Post</div>
                 </button>
             </div>

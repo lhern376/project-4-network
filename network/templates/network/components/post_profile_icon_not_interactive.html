@@ -1,0 +1,27 @@
+{% comment 'Context' %} 
+
+    var: user, model: User
+    var: post, model: Reply
+
+{% endcomment %}
+{% comment 'Blocks' %} 
+
+    continuity_line
+
+{% endcomment %}
+{% comment 'Notes' %}  
+
+    - for now just a copy-paste file from 'post_profile_icon.html' with couple commented out sections
+    - might extend 'post_profile_icon.html' later on instead
+
+{% endcomment %}
+<div class="post-profile-wrapper">
+    <div class="post-profile-icon">
+        <a {% comment %}href=""{% endcomment %}>
+            <div></div>
+        </a>
+        {% comment %}<div class="post-profile-overlay"></div>{% endcomment %}
+    </div>
+    {% block continuity_line %}
+    {% endblock continuity_line %}
+</div>

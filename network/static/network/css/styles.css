@@ -18,7 +18,7 @@
 
 /* ---------------------------------------------- Modal Styles */
 
-/* ---------------------------------------------- Post Button Styles */
+/* ---------------------------------------------- Post Button Styles (navigation) */
 
 /* ---------------------------------------------- Close Button Styles */
 
@@ -91,6 +91,15 @@ body {
   /* used on 'body' to disable scrolling with javascript */
   height: 100%; /* --> not needed */
   overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .main-layout-a {
@@ -198,6 +207,10 @@ body {
   flex-direction: column;
 }
 
+.nav-chunk-item a:hover {
+  --bg-local: var(--bg-color-nav-link);
+}
+
 .nav-chunk-item a div {
   display: inline-flex;
   align-items: center;
@@ -207,12 +220,10 @@ body {
   padding-right: 3rem;
   border-radius: 9999px;
 
+  background-color: var(--bg-local);
+
   transition-property: background-color;
   transition-duration: 0.2s;
-}
-
-.nav-chunk-item a div:hover {
-  background-color: var(--bg-color-nav-link);
 }
 
 /* ---------------------------------------------- Modal Styles */
@@ -263,7 +274,7 @@ body {
   justify-content: start;
 }
 
-/* ---------------------------------------------- Post Button Styles */
+/* ---------------------------------------------- Post Button Styles (navigation) */
 
 /* post button needs higher specificity than '.nav-chunk-item a div' to override 'inline-flex' and take up full container width */
 /* .post-button { */
@@ -586,6 +597,13 @@ main section:last-child {
 .write-message-wrapper {
   padding-block: 1rem;
   min-height: 9.6rem;
+  max-height: 70rem;
+
+  overflow: auto;
+}
+
+.write-message-wrapper:hover {
+  cursor: text;
 }
 
 .write-message-wrapper > div {
@@ -596,6 +614,9 @@ main section:last-child {
   font-size: 2rem;
   line-height: 2.4rem;
   outline-style: none;
+
+  max-width: 98%;
+  word-break: break-all;
 }
 
 .message-placeholder {
@@ -633,6 +654,11 @@ main section:last-child {
 .form-post-button:hover {
   cursor: pointer;
   background-color: var(--bg-color-post-btn-hover);
+}
+
+.form-post-button:hover.disabled {
+  cursor: default;
+  background-color: var(--bg-color-post-btn);
 }
 
 /* ---------------------------------------------- Media Queries */
