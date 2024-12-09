@@ -70,6 +70,10 @@
 
   --fill-active-white: rgb(239, 243, 244);
 
+  /* scrollbar */
+  --scroll-bar-thumb: rgb(62, 65, 68);
+  --scroll-bar-track: rgb(22, 24, 28);
+
   /* root styles */
   font-size: 10px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -81,6 +85,8 @@ body {
   color: var(--f-color);
   font-size: 1.5rem;
   line-height: 2rem;
+
+  scrollbar-color: var(--scroll-bar-thumb) var(--scroll-bar-track);
 
   /* normalize  */
   margin: 0;

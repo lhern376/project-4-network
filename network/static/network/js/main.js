@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (pointer === closeButton) break;
   }
 
+  const getCloseBtnNestedElements = (svgPath, closeButton) => {};
+
   // - adds overlay and disables scrolling
   document.querySelector(".post-button").addEventListener("click", () => {
     screenOverlay.classList.remove("hide");
@@ -74,18 +76,32 @@ document.addEventListener("DOMContentLoaded", () => {
     messageContent.focus();
   });
 
-  // - hides the placeholder message when typing anything into message
-  messageContent.addEventListener("keydown", () => {
+  // - hides the placeholder message when typing enter with an empty message (special case)
+  messageContent.addEventListener("keydown", (e) => {
     let content = messageContent.textContent;
-    messagePlaceholder.classList.add("hide");
+    let code = e.code;
+    if (code === "Enter" && content === "") {
+      // console.log("keydown");
+      messagePlaceholder.classList.add("hide");
+    }
   });
 
   // - shows placeholder message if message content is blank
-  // ...pending...
+  messageContent.addEventListener("keyup", (e) => {
+    let inner_html = messageContent.innerHTML;
+    let code = e.code;
+    if (code === "Backspace" && inner_html === "") {
+      // console.log("keyup");
+      messagePlaceholder.classList.remove("hide");
+    }
+  });
 
   // - disables formPostButton if message content is blank or only whitespace
+  // - hides placeholder if anything is typed into message (general case)
   messageContent.addEventListener("input", () => {
     let content = messageContent.textContent;
+
+    if (content !== "") messagePlaceholder.classList.add("hide");
 
     if (content !== "" && content.trim() !== "") {
       formPostButton.disabled = false;
@@ -101,5 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetPost() {
     messageContent.innerHTML = "";
     messagePlaceholder.classList.remove("hide");
+    formPostButton.disabled = true;
+    formPostButton.classList.add("disabled");
   }
 });
