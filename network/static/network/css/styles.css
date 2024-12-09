@@ -89,7 +89,7 @@ body {
 
 .stop-scrolling {
   /* used on 'body' to disable scrolling with javascript */
-  height: 100%; /* --> not needed */
+  /* height: 100%;  --> not needed */
   overflow: hidden;
 }
 
@@ -597,7 +597,9 @@ main section:last-child {
 .write-message-wrapper {
   padding-block: 1rem;
   min-height: 9.6rem;
-  max-height: 70rem;
+  /* max-height: 70rem;
+  max-height: 90%; */
+  max-height: 50vh;
 
   overflow: auto;
 }

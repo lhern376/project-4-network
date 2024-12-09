@@ -35,11 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (elem === screenOverlay || elem === screenOverlayInnerChild) {
       screenOverlay.classList.add("hide");
       body.classList.remove("stop-scrolling");
+      resetPost();
     } else {
       for (const child of nestedElements) {
         if (elem === child) {
           screenOverlay.classList.add("hide");
           body.classList.remove("stop-scrolling");
+          resetPost();
           break;
         }
       }
@@ -72,29 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
     messageContent.focus();
   });
 
-  // - hides the placeholder message when writing message
+  // - hides the placeholder message when typing anything into message
+  messageContent.addEventListener("keydown", () => {
+    let content = messageContent.textContent;
+    messagePlaceholder.classList.add("hide");
+  });
 
   // - shows placeholder message if message content is blank
+  // ...pending...
 
   // - disables formPostButton if message content is blank or only whitespace
-
   messageContent.addEventListener("input", () => {
     let content = messageContent.textContent;
-    let inner_html = messageContent.innerHTML;
 
-    if (inner_html.endsWith("<br>")) {
-      // messageContent.innerHTML = "";
-      messagePlaceholder.classList.add("hide");
-    }
-
-    // handle 'messagePlaceholder' (handled separately from 'formPostButton' to resolve a bug and emulate Twitter's behavior)
-    if (content !== "") {
-      messagePlaceholder.classList.add("hide");
-    } else {
-      messagePlaceholder.classList.remove("hide");
-    }
-
-    // handle 'formPostButton'
     if (content !== "" && content.trim() !== "") {
       formPostButton.disabled = false;
       formPostButton.classList.remove("disabled");
@@ -103,4 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
       formPostButton.classList.add("disabled");
     }
   });
+
+  // - reset post upon exiting modal (used on '---- Modal functionality ----')
+  // - hoisted function
+  function resetPost() {
+    messageContent.innerHTML = "";
+    messagePlaceholder.classList.remove("hide");
+  }
 });
