@@ -1,12 +1,748 @@
 
 
 >> 	write down on the html files which classes are used with javascript
+>>	dont forget functional programming approach when possible to facilitate future testing
+
+>>	highlight text upon exceeding max number of characters and disable post button
+
+
+	he decidido no continuar con ustedes
+
+	ya tu sabes, es como tu dices, no es nada personal. Simplemente, en este momento no me parece que esta sea la mejor manera
+
+	de emplear mi tiempo. en el futuro, bueno, uno nunca sabe.
+
+	disculpa, tu sabes, si esto es un letdown
+
+	tu no me tiennes que pagar nada, por eso no te preocupes. Si tu crees que estas rompiendo un codigo de etica tuyo personal
+	
+	tu paga lo que tu consideres mi hermano no te preocupes por eso, no resentment no judgement nothing ok
+
+	
+	Mira ya la forma esta terminada. Tu me dices que estas hiendo a las convenciones 
+
+	
+	/var/www/projects/project-kaizen-encoder-landing-page-final-demo/kaizenwave-aa-encoder
+
+
+>>	Wordpress TODO
+
+	
+	Stylesheet (style.css)		--> comment out default styles
+					--> add your styles
+
+	theme footer (footer.php)	--> delete footer
+
+	theme header (header.php)	--> delete header
+
+	sigle page (page.php)		--> remove header
+
+	Delete 'sidebar' from 'customize'
+
+	Create page 			--> add html and javascript here
+
+	Add page to homepage (as static page) from 'customize'
+
+	Add images
+
+	Add kadence blocks		--> not needed
+
+	Add WPForms
+
+
 
 >>	clipboard
 
-write-message-wrapper
-message-content
-message-placeholder
+	4. forma, 
+	2. expanding div, (check why it's not working on ios browser)
 
-form-post-button
-post-button
+1 day = $100	100 / 8 = $12.5 / hr
+
+layout:	site structure (header, footer, pages) + responsiveness				200
+form: 	interactive logic + anim + hook to WP						150
+modal: 	interactive logic + anim 							100
+scroll anim (logo, text, parallax effect), flicker effects, background movement		150
+
+take it to wordpress									50
+
+											- perspective:
+											
+											650 	-> 12.5
+											x	-> 18
+
+											650 * 18 / 12.5 = x = $936			
+
+
+
+>>	form
+
+flex container > child with padding and top margin and max-width 80%		--> all rows (flex-start questions, flex-end answers)
+
+Get in touch				--> fw-lg
+
+We'd love to get to know you!		--> fw-normal
+What's your name?
+
+
+Great! Could you also share your email so we can keep in touch?
+
+Don’t hold back. Tell us what you’d like to share!
+
+
+form fades out
+
+'Thank you' text
+
+
+-- click on response:
+
+	- adds opacity to everything else except self
+
+	- subsitutes textarea value for its text value
+
+-- 3 responses
+
+	hashmap {0: name, 1: email, 2: message}
+
+	move forward: idx + 1, if idx > 2 then display submit button
+
+		track position with an additional variable
+
+	
+
+
+
+/* Equation to map 'x' in range [a, b] to 'y' in range [c, d]
+  
+    x = scroll, [a, b] = [0, 100/3] (33%)
+
+    y = opacity, [c, d] = [1, 0] (from opacity 1 to opacity 0, from visible to invisible)
+  
+    y = {[(x - a) / (b - a)] * (d - c)} + c
+  
+  */
+
+
+x = scroll , a,b = 0 - 100
+
+y = percent, c, d = 100 - 0
+
+y = x - 0 / 100 - 0     * 100 - 0     + 0
+
+y = x / 100 * 100    + 0
+
+y = x 
+
+
+
+
+187 174 152
+
+33 37 38
+
+94 87 183
+	
+
+
+links.forEach((elem) => {
+        elem.classList.remove("cmstl-modal-menu-nav-anim");
+      });
+
+
+	modal component + animations
+
+git clone --single-branch --branch <branchname> <remote-repo>		--> single branch clone
+
+/var/www/projects/project-kaizen-encoder-landing-page-smooth/kaizenwave-aa-encoder
+
+Listen 8087
+<VirtualHost *:8087>
+        DocumentRoot "/var/www/projects/project-kaizen-encoder-landing-page-smooth/kaizenwave-aa-encoder"
+</VirtualHost>
+
+/var/www/projects/project-kaizen-encoder-landing-page-solid/kaizenwave-aa-encoder
+
+Listen 8086
+<VirtualHost *:8086>
+        DocumentRoot "/var/www/projects/project-kaizen-encoder-landing-page-solid/kaizenwave-aa-encoder"
+</VirtualHost>
+
+
+/var/www/projects/project-kaizen-encoder-landing-page-water/kaizenwave-aa-encoder
+
+Listen 8089
+<VirtualHost *:8089>
+        DocumentRoot "/var/www/projects/project-kaizen-encoder-landing-page/kaizenwave-aa-encoder"
+</VirtualHost>
+
+
+
+<div style="clip-path: circle(150% at 89.6555% 5.33564%); opacity: 1;" id="mobileMenu" class="text-white fixed top-0 left-0 w-screen h-screen z-[100] backdrop-blur-lg contact-form-clip overflow-hidden" data-v-130a5b3e="">
+
+
+clip-path: circle(0% at 89.6555% 5.33564%); opacity: 1; display: none;
+
+
+form container: max-width ~ 800px
+
+		padding 57.6	@768 inline: 9.6, block: 14.4
+
+
+x button svg 42x42	container padding: 9.6 		@768 4.8
+
+
+
+always 2 * 100vh 
+
+
+6 54 134
+
+23 67 154
+
+48 87 185
+
+76 130 208
+
+101 167 224
+
+123 201 239
+
+
+
+---- 	Host a demo
+
+
+
+/var/www/
+
+/etc/httpd/conf.d/{USERNAME}/{zodiac}.conf		--> sample virtual host
+
+	--> temp 30 days token github
+
+/var/www/projects/project-kaizen-encoder-landing-page/kaizenwave-aa-encoder
+
+
+systemctl start httpd
+
+systemctl restart httpd
+
+systemctl status httpd
+
+systemctl stop firewalld
+
+		- checking what ports are open on the VM:
+
+			firewall-cmd --list-all
+
+
+----	responsive layout
+
+
+
+	infin				1536px				1280px			1024px			768px
+
+----	section-wrapper
+
+>>	padding
+
+	block: 38.4			block: 38.4			block: 38.4		block: 38.4		block: 24
+	inline: 115.2			inline: 115.2			inline: 115.2		inline: 76.8		inline: 24
+
+
+----	content-wrapper
+
+>>	margin
+
+	mt: 230														38.4
+
+	mb: 230														154
+
+----	control buttons
+
+	size														size of control fixed
+
+----	control buttons fixed
+
+>>	padding
+
+	all: 24														all: 14.4
+	
+	svg size: 29													svg size: 19
+
+----	text xl
+
+	153														105
+
+	m-b: 76.8													38.4
+
+>>	what we do
+
+	m-t: 384													230
+
+----	text lg
+
+	72														48
+
+	mb-33.6														19.2
+
+
+
+----	text normal
+
+	19
+
+----	text small
+
+	16.8
+
+
+----	what we do text normal wrapper
+
+	60%											100%
+
+
+
+
+10rem - 11.5rem
+
+
+
+>> 	Notes
+
+
+spline 3d models
+
+
+AKDev Spline animation					plugin
+The Plus Blocks for Gutenberg Spline 3D viewer block 	plugin
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=ZSQuEAVEHGs&ab_channel=CSSnippets
+--	Transform Properties
+
+
+	rotate		--> deg, radian, gradian, turn
+
+			--> rotate(), rotate3d(), rotateX() Y() Z()
+
+	translate	--> length units
+
+			--> translate(x, y), translateX Y Z, translate3d
+
+	scale		--> value 0 - 1 reduce the scale, greater than 1 increase the scale
+
+			--> scaleX, scale along the x axis
+			--> scaleY, scale along the y axis
+
+			--> scale(x, y)
+
+	skew		--> distort element by skewing it along x and y axis
+
+			--> skew(), skewX(), skewY()
+
+			--> degree, radian, gradian, turn
+
+
+	matrix		--> combine multiple transform properties into a single function
+
+			--> order:
+
+				transform: matrix([scaleX], [skewY], [skewX], [scaleY], [translateX], [translateY]);
+
+				transform: matrix(2, 1, 1, 2, 70, -100);	--> for translate prop, do not specify px, ie. 70px
+
+
+	transform	--> shorthand to include multiple transform properties
+
+				transform: translate(50px, 30px) rotate(45deg) scale(1.2) skew(10deg, 15deg);
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=Bhj4miRkSOc&list=LL&index=2&t=89s&ab_channel=CSSnippets
+--	Transitions
+
+
+.box {
+
+height: 200px;
+width: 200px;
+background: var(--bg-color);
+
+transition-property: transform, background-color, scale;
+transition-duration: 1s;
+transition-timing-function: ease;				// linear, steps, ease, ease-in, ease-in-out, ease-out, cubic-bezier
+transition-delay: 0s;
+
+
+	ease: 		slow fast slow
+
+	ease-in: 	slow fast		// for transitions that build momentum
+
+	ease-in-out:	slow fast slow		// ease-in then slow
+
+	ease-out:	fast slow		// for transitions that start fast and then come to a gentle stop 
+
+	linear:		constant speed		// uniform transition
+
+	steps:		in steps rather than smooth	// useful for frame by frame animations
+
+	cubic-bezier: 	allows you to create a custom curve by setting 4 values 
+			(cubic-bezier.com for a visual of your curve and comparisons with the other timing functions)
+
+	- you can inspect your output timing function in the browser and tweak it there
+
+
+
+--> shorthand
+
+	transition: transform 1s ease, background-color 1s linear, scale 1s ease; 	(order: duration, timing function, delay)
+
+	or 
+
+	transition: all 1s ease;	(if you have transitions on properties with the same duration, timing function, and delay)
+
+
+.box:hover {
+
+transform: rotate(135deg);
+background-color: cyan;
+scale: 2;
+
+
+
+--	Animations
+
+	- properties:
+
+		animation-name
+
+		animation-duration		// seconds or milliseconds
+
+		animation-timing-function	// speed curve of the animation (how it progresses) (linear, ease, ease-in, ease-out, ease-in-out, steps)
+
+		animation-delay			// offset when an animation begins. (seconds or milliseconds)
+
+		animation-iteration-count	// number of repetitions or the keyword 'infinite'
+
+		animation-direction		// specifies from which keyframe direction to start
+						// 'normal', 'reverse', 'alternate', 'alternate-reverse' ('alternate' alternates between normal and reverse)
+
+		animation-fill-mode		// 'none' 'forwards' 'backwards' 'both'
+						// check mdn for specifics
+
+		animation-play-state		// 'running' 'paused'		--> there are events associated to these, ie. 'animationend'
+
+	- the shorthand 'animation' follows the order above
+
+
+
+.box {
+
+height: 200px;
+width: 200px;
+background: var(--bg-color);
+
+
+animation-name: example;
+animation-duration: 2s;			
+animation-timing-function: ease;	
+animation-delay: 0s;
+animation-iteration-count
+animation-direction
+animation-fill-mode
+animation-play-state
+
+
+@keyframes example {
+
+from {
+
+	transform: translateY(0px) rotate(0deg);
+
+to {
+
+	transform: translateY(-100px) rotate(135deg);
+
+
+
+.loading {
+
+height: 50px;
+width: 50px;
+border: 5px solid cyan;
+border-radius: 3px;
+box-shadow: 0 0 8px cyan, 0 0 8px cyan inset;
+animation: loading 2s ease-in infinite;
+
+
+@keyframes loading {
+
+0% {
+
+	transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
+33% {
+
+	transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+
+67% {
+
+	transform: rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+
+100% {
+
+	transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+
+
+
+
+--	Scroll Animations
+
+	
+	animation-timeline		// 'view()'	// by default starts animation when element comes into view and finishes when element
+							goes out of view
+							// can pass view(pixel amount) to specify offset, ie. 100px anim starts 100px after it comes into
+							view and finishes 100px before it goes out of view
+							// or view(firstOffset secondOffset)
+								
+								firstOffset refers to the top of the screen (when anim should end)
+
+								secondOffset refers to bottom of the screen (when anim should start)
+
+					// scroll()	// starts animation at the top of body, ends when scrolling through the whole body
+							// can pass scroll(x) or scroll(y) to specify scrolling direction
+
+	animation-range			// 'entry' starts as soon as elem comes into view, ends when elem becomes fully visible in the viewport
+
+						can add entry + offset, ie: animation-range: entry 500px;
+
+					// 'exit' starts as soon as elem begins to exit the view, ends when it is out of viewport
+
+		- shorthand for:
+
+			animation-range-start: offset | cover | contain
+
+			animation-range-end: offset | contain		--> here contain makes the anim finish when the top of the elem touches the top 
+									of the viewport
+
+				- 'cover' kicks the anim in as soon as elem comes into view
+
+				- 'contain' kicks the anim in after the entire element is visible in the viewport 
+		
+
+.scroll-element>.block*16		--> generate a div with class '.scroll-element' with 16 children divs with class '.block'
+
+
+.block {
+
+animation: scrolling linear;
+
+animation-timeline: view();		--> starts animation when element comes into view
+animation-range: entry 0% cover 50%;	--> starts as soon as it is visible ('entry') with no offset (0%)
+					and covers the entire animation by the time the element is 50% of the view
+
+
+@keyframes scrolling {
+
+from {
+	opacity: 0;
+	scale: 0.5;
+	// transform: translateX(-150px);
+
+
+to {
+	opacity: 1;
+	scale: 1;
+	// transform: translateX(0px);
+
+
+
+https://www.youtube.com/watch?v=srwOTsD_dYo
+--	Sample animation
+
+
+.fade-in {
+
+	animation: fade-in linear forwards;
+	animation-timeline: view();
+	animation-range: entry;
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(400px);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=2IbRtjez6ag&list=WL&index=12&ab_channel=WebDevSimplified
+--	Intersection Observer
+
+>>	Uses
+
+	- scroll based animations, lazy loading images, implement infinite scrolling
+
+	- the callback is applied when the element comes into the screen (you can specify offsets)
+
+
+// intersection observer
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    // 'entries' is always an array
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("show", entry.isIntersecting);	// NOTE: notice entry.target is only used when using classList and unobserve
+      // if (entry.isIntersecting) observer.unobserve(entry.target); // use this if you want to stop observing the element after it has been intersected 
+									(good for animations that you don't want to undo as you scroll back up)
+    });
+  },
+  {
+    threshold: 1, 		// value from 0 - 1 (default: 0), represents what percentage of the element needs to be on screen for the callback 
+				to take effect
+    rootMargin: "-100px", 	// negative value shrinks the portion of the screen that will trigger the callback, positive values run the callback before
+				the element appears on screen by the specified value (good for preloading images)
+    // root: someElement 	// by default it is the entire screen, but you can pass it an element (ie. the parent container of '.card' elements)
+  }
+);
+
+cards.forEach((card) => {
+  observer.observe(card); 	// can only add one item at a time
+});
+
+// observing the last card only to start loading new cards
+
+const lastCardObserver = new IntersectionObserver(
+  (entries) => {
+    const lastCard = entries[0];
+    if (!lastCard.isIntersecting) return;
+    loadNewCards();
+    lastCardObserver.unobserve(lastCard.target);
+    lastCardObserver.observe(document.querySelector(".card:last-child")); 	// observe the new last card
+  },
+  { rootMargin: "100px" } 	// generally, you want to start loading new cards before you get to the bottom of the list
+);
+
+lastCardObserver.observe(document.querySelector(".card:last-child"));
+
+const cardContainer = document.querySelector(".card-container");
+function loadNewCards() {
+  for (let i = 0; i < 10; i++) {
+    const card = document.createElement("div");
+    card.textContent = "New Card";
+    card.classList.add("card");
+    observer.observe(card);
+    cardContainer.append(card);
+  }
+}
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=mxHoPYFsTuk&ab_channel=WebDevSimplified
+--	Parallax effect
+
+
+>>	html
+
+<div class="wrapper">
+	<header>				--> header is the container where you stack the background and content
+		img class="background"		--> you can have simply a background and no foreground
+		img class="foreground"
+		h1				--> h1 here represents the content that will have the background with the parallax effect
+	<header>
+	<section>				--> 'section' is the content that is going to hide the background and foreground
+</div>
+
+
+
+>>	css
+
+	- you need to create a scroll container (by default 'body')
+
+	- this is how to make 'wrapper' the new scrolling context:
+
+.wrapper {
+  height: 100vh;
+  overflow-y: auto;
+
+  overflow-x: hidden; /* only the two lines above are needed, this one just makes it nicer */
+
+  /* now create 3d effect */
+  perspective: 10px;  /* the value itself is not important, what is important is that the rest be setup relative to the value */
+			/* 'perspective' is adding depth in the z-axis */
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+
+.background,
+.foreground {
+  position: absolute;
+  height: 100%;
+  width: 100vw; /* 100% leaves a tiny portion of the background visible */
+  object-fit: cover;
+  z-index: -1;
+}
+
+.background {
+  transform: translateZ(-10px) scale(2); /* -10px is twice as far away from original perspective (10px) so we scale the background back to full screen size */
+}
+
+.foreground {
+  transform: translateZ(-5px) scale(1.5); /* 1.5 times away from original perspective */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

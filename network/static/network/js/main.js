@@ -13,15 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.querySelector(".close-button");
 
   // - gets all nested elements in '.close-button' (need to check all to close modal properly)
-  const nestedElements = [svgPath];
-  let pointer = svgPath;
-  while (true) {
-    pointer = pointer.parentElement;
-    nestedElements.push(pointer);
-    if (pointer === closeButton) break;
-  }
-
-  const getCloseBtnNestedElements = (svgPath, closeButton) => {};
+  const getCloseBtnNestedElements = (svgPath, closeButton) => {
+    const nestedElements = [svgPath];
+    let pointer = svgPath;
+    while (true) {
+      pointer = pointer.parentElement;
+      nestedElements.push(pointer);
+      if (pointer === closeButton) break;
+    }
+    return nestedElements;
+  };
+  const nestedElements = getCloseBtnNestedElements(svgPath, closeButton);
 
   // - adds overlay and disables scrolling
   document.querySelector(".post-button").addEventListener("click", () => {
@@ -72,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // - makes messageContent active when clicking on messageWrapper
-  messageWrapper.addEventListener("click", (e) => {
+  messageWrapper.addEventListener("click", () => {
     messageContent.focus();
   });
 
@@ -112,7 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // - reset post upon exiting modal (used on '---- Modal functionality ----')
+  // - reset post
+  // - used upon exiting modal (found on section: '---- Modal functionality ----')
   // - hoisted function
   function resetPost() {
     messageContent.innerHTML = "";
