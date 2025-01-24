@@ -1,59 +1,70 @@
+// Index
+
+//  * ---- Helper Functions
+
+//  * ---- Close-any-modal
+
+//  * ---- Open Post Modal
+
+//  * ---- Post functionality
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------ */
+
 document.addEventListener("DOMContentLoaded", () => {
   /**
-   * ---- Modal functionality ----
+   * ---- Helper Functions
    *
-   * - Closes and opens modal
+   */
+
+  function onOpenModal() {
+    // - adds overlay and disables scrolling
+    screenOverlay.classList.remove("hide");
+    body.classList.add("stop-scrolling");
+  }
+
+  function onCloseModal() {
+    // - removes overlay and enables scrolling
+    screenOverlay.classList.add("hide");
+    body.classList.remove("stop-scrolling");
+  }
+
+  /**
+   * ---- Close-any-modal
+   *
+   * - Closes any modal
+   * - Elements that close modal contain the data attribute data-js-close-modal
    *
    */
 
   const body = document.querySelector("body");
   const screenOverlay = document.querySelector(".modal-overlay");
-  const screenOverlayInnerChild = document.querySelector(".modal-set-height");
-  const svgPath = document.querySelector(".close-button path");
-  const closeButton = document.querySelector(".close-button");
 
-  // - gets all nested elements in '.close-button' (need to check all to close modal properly)
-  const getCloseBtnNestedElements = (svgPath, closeButton) => {
-    const nestedElements = [svgPath];
-    let pointer = svgPath;
-    while (true) {
-      pointer = pointer.parentElement;
-      nestedElements.push(pointer);
-      if (pointer === closeButton) break;
-    }
-    return nestedElements;
-  };
-  const nestedElements = getCloseBtnNestedElements(svgPath, closeButton);
-
-  // - adds overlay and disables scrolling
-  document.querySelector(".post-button").addEventListener("click", () => {
-    screenOverlay.classList.remove("hide");
-    body.classList.add("stop-scrolling");
-  });
-
-  // - removes overlay and enables scrolling
   document.addEventListener("click", (e) => {
-    // listen to entire document for below targets
-    let elem = e.target;
-    // console.log(elem);
-    if (elem === screenOverlay || elem === screenOverlayInnerChild) {
-      screenOverlay.classList.add("hide");
-      body.classList.remove("stop-scrolling");
+    const elem = e.target;
+    if (elem.hasAttribute("data-js-close-modal")) {
+      onCloseModal();
+      // reset post, reset sign up, reset sign in
       resetPost();
-    } else {
-      for (const child of nestedElements) {
-        if (elem === child) {
-          screenOverlay.classList.add("hide");
-          body.classList.remove("stop-scrolling");
-          resetPost();
-          break;
-        }
-      }
     }
   });
 
   /**
-   * ---- Post-reply functionality ----
+   * ---- Open Post Modal
+   *
+   * - Opens post modal
+   * - Elements that open post modal contain the data attribute data-js-open-post-modal
+   *
+   */
+
+  document.addEventListener("click", (e) => {
+    const elem = e.target;
+    if (elem.hasAttribute("data-js-open-post-modal")) {
+      onOpenModal();
+    }
+  });
+
+  /**
+   * ---- Post functionality
    *
    * - makes post message user-friendly
    *

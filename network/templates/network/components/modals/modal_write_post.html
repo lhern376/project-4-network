@@ -1,4 +1,4 @@
-{% extends "network/components/modal.html" %}
+{% extends "network/components/modals/modal.html" %}
 {% comment 'Context' %} 
 
     var: user, model: User
@@ -16,7 +16,7 @@
         <div class="utility-wrapper">
             <div class="flex">
                 {% block profile_icon %}
-                    {% include "network/components/post_profile_icon_not_interactive.html" %}
+                    {% include "network/components/posts/post_profile_icon_not_interactive.html" %}
                 {% endblock profile_icon %}
                 <div class="write-message-wrapper flex-1">
                     <div>

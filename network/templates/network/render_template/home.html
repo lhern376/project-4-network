@@ -26,10 +26,10 @@
             </nav>
         </article>
         {% for post in posts %}
-            <article>{% include "network/components/post.html" %}</article>
+            <article>{% include "network/components/posts/post.html" %}</article>
         {% endfor %}
         {% for post in posts %}
-            <article>{% include "network/components/reply_simplified.html" %}</article>
+            <article>{% include "network/components/posts/reply_simplified.html" %}</article>
         {% endfor %}
         <div class="spacing"></div>
     </div>

@@ -17,11 +17,15 @@
     
 {% endcomment %}
 {% load static %}
-<div class="modal-overlay hide">
-    <div class="modal-set-height">
+<div class="modal-overlay hide" data-js-close-modal>
+    <div class="modal-set-height" data-js-close-modal>
         <div class="modal-wrapper flex flex-column">
             <div>
-                <button aria-label="Close" role="button" class="close-button" type="button">
+                <button aria-label="Close"
+                        role="button"
+                        class="close-button"
+                        type="button"
+                        data-js-close-modal>
                     <div class="svg-close-wrapper flex flex-center" title="Close">
                         <div class="svg-wrapper flex flex-center border-pill background-transition">
                             <svg xmlns="http://www.w3.org/2000/svg"

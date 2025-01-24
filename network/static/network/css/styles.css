@@ -316,6 +316,8 @@ body {
 
 .svg-close-wrapper {
   fill: var(--fill-active-white);
+
+  pointer-events: none;
 }
 
 .svg-close-wrapper:hover {
@@ -571,6 +573,8 @@ main section:last-child {
   height: 3.5rem;
 
   background-color: var(--bg-local);
+
+  pointer-events: none;
 }
 
 .svg-wrapper svg {

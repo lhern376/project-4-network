@@ -1,4 +1,4 @@
-{% extends "network/components/post.html" %}
+{% extends "network/components/posts/post.html" %}
 {% comment 'Context' %} 
 
     var: user, model: User
@@ -15,7 +15,7 @@
 {% endcomment %}
 {% comment %} adds continuity line {% endcomment %}
 {% block post_profile_icon %}
-    {% include "network/components/post_profile_icon_reply.html" %}
+    {% include "network/components/posts/post_profile_icon_reply.html" %}
 {% endblock post_profile_icon %}
 {% comment %} empties 'three_dots_icon' {% endcomment %}
 {% block three_dots_icon %}

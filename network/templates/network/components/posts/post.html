@@ -24,7 +24,7 @@
     <div></div>
     <div class="post-content-wrapper">
         {% block post_profile_icon %}
-            {% include "network/components/post_profile_icon.html" %}
+            {% include "network/components/posts/post_profile_icon.html" %}
         {% endblock post_profile_icon %}
         <div class="utility-wrapper flex-1">
             <div class="post-content">
@@ -57,7 +57,9 @@
                 </div>
                 {% block reply_bar %}
                     <div class="reply-repost-like-wrapper">
-                        <div class="svg-reply-wrapper flex flex-center" title="Reply">
+                        <div class="svg-reply-wrapper flex flex-center"
+                             title="Reply"
+                             data-js-open-post-modal>
                             <div class="svg-wrapper flex flex-center border-pill background-transition">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 24 24"
@@ -69,7 +71,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <div class="count text-small color-transition">300</div>
+                            <div class="count text-small color-transition" data-js-open-post-modal>300</div>
                         </div>
                         <div class="svg-repost-wrapper flex flex-center" title="Repost">
                             <div class="svg-wrapper flex flex-center border-pill background-transition">
