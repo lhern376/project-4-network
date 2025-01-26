@@ -74,6 +74,8 @@
   --scroll-bar-thumb: rgb(62, 65, 68);
   --scroll-bar-track: rgb(22, 24, 28);
 
+  /*  */
+
   /* root styles */
   font-size: 10px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -87,6 +89,8 @@ body {
   line-height: 2rem;
 
   scrollbar-color: var(--scroll-bar-thumb) var(--scroll-bar-track);
+
+  overscroll-behavior-y: none;
 
   /* normalize  */
   margin: 0;
@@ -183,6 +187,15 @@ body {
 }
 
 /* ---------------------------------------------- Header Styles */
+
+.header-a {
+  position: relative;
+}
+
+.nav-a {
+  position: sticky;
+  top: 0;
+}
 
 .navigation {
   display: flex;
@@ -316,8 +329,6 @@ body {
 
 .svg-close-wrapper {
   fill: var(--fill-active-white);
-
-  pointer-events: none;
 }
 
 .svg-close-wrapper:hover {

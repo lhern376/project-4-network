@@ -60,13 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const elem = e.target;
     if (elem.hasAttribute("data-js-open-post-modal")) {
       onOpenModal();
+      messageContent.focus();
     }
   });
 
   /**
    * ---- Post functionality
    *
-   * - makes post message user-friendly
+   * - makes post message interactive
+   * - sends post message
+   * - displays errors if any or reloads the page if no errors
    *
    */
 
@@ -74,15 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const messageContent = document.querySelector(".message-content");
   const messagePlaceholder = document.querySelector(".message-placeholder");
   const formPostButton = document.querySelector(".form-post-button");
-  const postButton = document.querySelector(".post-button");
 
   // https://codepen.io/sinfullycoded/details/oNLBJpm (--NOT NEEDED-- but interesting example)
   // --> Set cursor at end of elements demo: Content Editable Div with Child nodes, and TextArea, and Input element
 
-  // - makes messageContent active by default when opening the post modal
-  postButton.addEventListener("click", () => {
-    messageContent.focus();
-  });
+  /* ---------------------------------------------------- interactivity */
 
   // - makes messageContent active when clicking on messageWrapper
   messageWrapper.addEventListener("click", () => {
@@ -134,4 +133,36 @@ document.addEventListener("DOMContentLoaded", () => {
     formPostButton.disabled = true;
     formPostButton.classList.add("disabled");
   }
+
+  /* ---------------------------------------------------- send post message */
+
+  const csrftoken = document.querySelector("#csrftoken input").value;
+
+  async function postData(url, data, csrftoken) {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken,
+        },
+        mode: "same-origin", // assures that csrf token is not sent to another domain
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // I expect json sent from the view
+        const data = await response.json();
+        console.log(data["message"]);
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(`${error}`);
+    }
+  }
+
+  formPostButton.addEventListener("click", (e) => {
+    postData("/post", { post: messageContent.innerHTML }, csrftoken);
+    window.location.reload();
+  });
 });

@@ -37,6 +37,7 @@
         </title>
     </head>
     <body>
+        <div id="csrftoken">{% csrf_token %}</div>
         {% block body %}
         {% endblock body %}
         {% block js_files %}

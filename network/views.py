@@ -10,13 +10,18 @@
 
 """
 
-from django.contrib.auth import authenticate, login, logout
-from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+from django.db import IntegrityError
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 
 from .models import User, Reply
+
+import json
 
 
 def index(request):
@@ -31,6 +36,47 @@ def home(request):
 
     context = {"posts": all_posts}
     return render(request, "network/render_template/home.html", context)
+
+
+@login_required
+def create_post(request):
+
+    if request.method == "POST":
+
+        # - get json
+        body_unicode = request.body.decode("utf-8")
+        body = json.loads(body_unicode)
+        post_content: str = body["post"]
+        # post_type = body["type"]
+
+        # - validate and sanatize
+        post_content = post_content.replace("<br>", "\n").replace("&nbsp;", " ")
+        # NOTE:
+        # - below is the filter used on template component 'posts/post.html'
+        # which works in conjunction with the above line for appropriate rendering of post content:
+        #   post.reply_message|linebreaksbr
+
+        # - create new post
+
+        new_reply = Reply(
+            replier=request.user,
+            reply_message=post_content,
+        )
+        new_reply.save()
+
+        return JsonResponse({"message": "status: ok"})
+
+
+@login_required
+def create_reply(request): ...
+
+
+@login_required
+def create_quote(request): ...
+
+
+@login_required
+def create_repost(request): ...
 
 
 def login_view(request):
