@@ -124,7 +124,7 @@ class Reply(models.Model):
     # track with logic
     num_likes = models.IntegerField(default=0)
 
-    reply_message = models.CharField(max_length=280, help_text="What is happening!?")
+    reply_message = models.CharField(max_length=1000, help_text="What is happening!?")
 
     # track with logic
     num_direct_replies = models.IntegerField(default=0)

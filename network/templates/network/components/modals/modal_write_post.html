@@ -18,18 +18,25 @@
                 {% block profile_icon %}
                     {% include "network/components/posts/post_profile_icon_not_interactive.html" %}
                 {% endblock profile_icon %}
-                <div class="write-message-wrapper flex-1">
+                <div class="write-message-wrapper flex-1"
+                     data-js-select-write-message-wrapper>
                     <div>
-                        <span class="message-content" contenteditable="true"></span>
-                        <span class="message-placeholder">What is happening?!</span>
+                        <span class="message-content"
+                              data-js-select-message-content
+                              contenteditable="true"></span>
+                        <span class="message-placeholder" data-js-select-message-placeholder>What is happening?!</span>
                     </div>
                 </div>
             </div>
             <div class="form-spacing"></div>
-            <div class="form-post-button-wrapper flex flex-main-end flex-cross-end">
+            <div class="form-post-button-wrapper flex flex-main-end flex-cross-end flex-h-gap">
+                <div class="char-left-wrapper">
+                    <span class="char-left" data-js-select-char-left>280</span>
+                </div>
                 <button type="button"
                         disabled="true"
-                        class="form-post-button disabled border-pill flex flex-center background-transition">
+                        class="form-post-button disabled border-pill flex flex-center background-transition"
+                        data-js-select-form-post-button>
                     <div>Post</div>
                 </button>
             </div>

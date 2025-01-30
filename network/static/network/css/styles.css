@@ -50,11 +50,15 @@
   /* variables */
   --bg-color: black; /* background color */
   --bg-color-nav-link: hsl(0, 0%, 10%); /* background color hover */
+  --bg-color-post-hover: hsl(0, 0%, 3%); /* background color hover */
   --bg-color-post-btn: rgb(29, 155, 240);
   --bg-color-post-btn-hover: rgb(26, 140, 216);
   --f-color: rgb(231, 233, 234); /* font color */
   --f-color-secondary: rgb(113, 118, 123);
   --b-color: rgb(47, 51, 54); /* border color */
+
+  --f-color-few-char-left: rgb(255, 212, 0);
+  --f-color-zero-char-left: rgb(243, 33, 46);
 
   --continuity-line-color: rgb(51, 54, 57);
 
@@ -153,6 +157,10 @@ body {
 
 .flex-cross-end {
   align-items: end;
+}
+
+.flex-h-gap {
+  gap: 1.5rem;
 }
 
 .justify-content-space-between {
@@ -420,6 +428,13 @@ main section:last-child {
   padding-inline: 1.6rem;
 }
 
+.post:hover {
+  background-color: var(--bg-color-post-hover);
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
 .post > div:first-child {
   padding-top: 1.2rem;
 }
@@ -682,6 +697,28 @@ main section:last-child {
 .form-post-button:hover.disabled {
   cursor: default;
   background-color: var(--bg-color-post-btn);
+}
+
+.char-left-wrapper {
+  height: 3.4rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.char-left {
+  opacity: 0.5;
+  color: var(--bg-color-post-btn);
+}
+
+.char-left.few-left {
+  opacity: 1;
+  color: var(--f-color-few-char-left);
+}
+
+.char-left.zero-left {
+  opacity: 1;
+  color: var(--f-color-zero-char-left);
 }
 
 /* ---------------------------------------------- Media Queries */

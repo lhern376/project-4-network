@@ -24,6 +24,14 @@ from .models import User, Reply
 import json
 
 
+class Constants:
+
+    MAX_CHAR = 280
+
+
+class ErrorMessages: ...
+
+
 def index(request):
     return HttpResponseRedirect(reverse("network:home"))
 
@@ -50,11 +58,18 @@ def create_post(request):
         # post_type = body["type"]
 
         # - validate and sanatize
-        post_content = post_content.replace("<br>", "\n").replace("&nbsp;", " ")
+        post_content_tester = (
+            post_content.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+        )
+        if len(post_content_tester) > Constants.MAX_CHAR:
+            # redirect to current url with error message
+            ...
         # NOTE:
         # - below is the filter used on template component 'posts/post.html'
-        # which works in conjunction with the above line for appropriate rendering of post content:
-        #   post.reply_message|linebreaksbr
+        # for appropriate rendering of post content:
+        # {% autoescape off %}
+        #   <span>{{ post.reply_message|linebreaksbr }}</span>
+        # {% endautoescape %}
 
         # - create new post
 

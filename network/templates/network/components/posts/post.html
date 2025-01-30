@@ -53,7 +53,9 @@
                     {% endblock three_dots_icon %}
                 </div>
                 <div class="message-wrapper">
-                    <span>{{ post.reply_message|linebreaksbr }}</span>
+                    {% autoescape off %}
+                        <span>{{ post.reply_message|linebreaksbr }}</span>
+                    {% endautoescape %}
                 </div>
                 {% block reply_bar %}
                     <div class="reply-repost-like-wrapper">

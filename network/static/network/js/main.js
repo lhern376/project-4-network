@@ -37,7 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
    */
 
   const body = document.querySelector("body");
-  const screenOverlay = document.querySelector(".modal-overlay");
+  const screenOverlay = document.querySelector(
+    "[data-js-select-modal-overlay]"
+  );
 
   document.addEventListener("click", (e) => {
     const elem = e.target;
@@ -73,10 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
    *
    */
 
-  const messageWrapper = document.querySelector(".write-message-wrapper");
-  const messageContent = document.querySelector(".message-content");
-  const messagePlaceholder = document.querySelector(".message-placeholder");
-  const formPostButton = document.querySelector(".form-post-button");
+  const messageWrapper = document.querySelector(
+    "[data-js-select-write-message-wrapper]"
+  );
+  const messageContent = document.querySelector(
+    "[data-js-select-message-content]"
+  );
+  const messagePlaceholder = document.querySelector(
+    "[data-js-select-message-placeholder]"
+  );
+  const formPostButton = document.querySelector(
+    "[data-js-select-form-post-button]"
+  );
+  const charRemaining = document.querySelector("[data-js-select-char-left]");
+
+  let formatted_message = "";
+  const MAX_CHAR = 280;
+  let prevFormat = ""; // temp variable that holds previous formatting class ('few-left', 'zero-left')
 
   // https://codepen.io/sinfullycoded/details/oNLBJpm (--NOT NEEDED-- but interesting example)
   // --> Set cursor at end of elements demo: Content Editable Div with Child nodes, and TextArea, and Input element
@@ -108,12 +123,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // - constructs 'formatted_message'
+  // - updates 'char-left' according to 'formatted_message' length
+  // - disables formPostButton if 'formatted_message' exceeds 280 in length
   // - disables formPostButton if message content is blank or only whitespace
   // - hides placeholder if anything is typed into message (general case)
   messageContent.addEventListener("input", () => {
     let content = messageContent.textContent;
+    formatted_message = messageContent.innerHTML
+      .replaceAll("<br>", "\n")
+      .replaceAll("&nbsp;", " ")
+      .trimEnd();
+    let l = formatted_message.length;
 
+    // update 'char-left' element
+    charRemaining.textContent = MAX_CHAR - l;
+    if (MAX_CHAR - l < 0) {
+      if (prevFormat) charRemaining.classList.remove(prevFormat);
+      charRemaining.classList.add("zero-left");
+      prevFormat = "zero-left";
+    } else if (MAX_CHAR - l < 21) {
+      if (prevFormat) charRemaining.classList.remove(prevFormat);
+      charRemaining.classList.add("few-left");
+      prevFormat = "few-left";
+    } else {
+      if (prevFormat) {
+        charRemaining.classList.remove(prevFormat);
+        prevFormat = "";
+      }
+    }
+
+    // hide placeholder message
     if (content !== "") messagePlaceholder.classList.add("hide");
+
+    // disable/enable post button
+    if (l > MAX_CHAR) {
+      formPostButton.disabled = true;
+      formPostButton.classList.add("disabled");
+      return;
+    }
 
     if (content !== "" && content.trim() !== "") {
       formPostButton.disabled = false;
@@ -132,6 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
     messagePlaceholder.classList.remove("hide");
     formPostButton.disabled = true;
     formPostButton.classList.add("disabled");
+    charRemaining.textContent = MAX_CHAR;
+    if (prevFormat) {
+      charRemaining.classList.remove(prevFormat);
+      prevFormat = "";
+    }
   }
 
   /* ---------------------------------------------------- send post message */
@@ -162,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   formPostButton.addEventListener("click", (e) => {
-    postData("/post", { post: messageContent.innerHTML }, csrftoken);
+    postData("/post", { post: formatted_message }, csrftoken);
     window.location.reload();
   });
 });
